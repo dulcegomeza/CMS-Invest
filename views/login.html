@@ -1,0 +1,19 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <br><br>
+        <img src="img/logo.png">
+        <form class="m-t" role="form" name="form" ng-submit="login()">
+            <div class="form-group">
+                <input type="email" class="form-control" ng-model="forma.user" placeholder="Correo Electrónico" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" ng-model="forma.pass" placeholder="Contraseña" required>
+            </div>
+            <button type="submit" ladda="loading" ng-disabled="form.$invalid" class="ladda-button ladda-button-demo block full-width m-b btn btn-primary" ng-click="login()" data-style="zoom-in">Entrar</button>
+        </form>
+
+        <div class="alert alert-danger text-left" ng-if="error">
+            <i class="fa fa-warning"></i> {{error}}
+        </div>
+    </div>
+</div>

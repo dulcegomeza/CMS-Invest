@@ -1,0 +1,73 @@
+    <div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h1>Videos</h1>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <button class="btn btn-primary" ui-sref="videos.agregar">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row m-b">
+                        <div class="col-sm-6">
+                            <button  class="btn btn-success" ng-click="principal()" ><i class="fa fa-star-o"></i> Principal</button>
+                        </div>
+                            <div class="col-sm-12">
+                                <span class="label" style="border:1px solid;background-color:#a9dcf6;color:#000000; float: right !important">NO PUBLICADO</span>
+                            </div>
+                    </div>
+                    <div class="sk-spinner sk-spinner-wave" ng-if="loading">
+                        <div class="sk-rect1"></div>
+                        <div class="sk-rect2"></div>
+                        <div class="sk-rect3"></div>
+                        <div class="sk-rect4"></div>
+                        <div class="sk-rect5"></div>
+                    </div>
+                    <div class="alert alert-warning" ng-if="!videos">
+                        <i class="fa fa-warning"></i> No hay ningun video.
+                    </div>
+                    <div class="table-responsive" ng-if="!loading && videos">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Titulo</th>
+                                    <th>Video</th>
+                                    <th><center>Principal</center></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="video in videos" ng-class="{true: 'info', false:''} [video.activo==0]">
+                                    <td width="10%">{{video.idvideo}}</td>
+                                    <td>{{video.titulo}}</td>
+                                    <td style="white-space: pre-wrap !important;">{{video.url}}</td>
+                                    <td ng-if="video.activo==1">
+                                        <center>
+                                            <div ng-if="video.principal==0"  class="radio radio-info radio-inline">
+                                                <input  ng-click="obtener(video.idvideo)" type="radio"  name="radioInline" >
+                                                <label for="inlineRadio1"> </label>
+                                            </div>
+                                            <p ng-if="video.principal==1">PRINCIPAL</p>
+                                        </center>
+                                    </td>
+                                    <td ng-if="video.activo==0"><center>No activo</center></td>
+                                    <td class="text-center" width="10%">
+                                        <button title="publicar" ng-if="video.activo==0" class="btn btn-success" ng-click="publicar(video.idvideo,1,video.principal)" ><i class="fa fa-arrow-up"></i></button>
+                                        <button  title="remover" ng-if="video.activo!=0" class="btn btn-danger" ng-click="publicar(video.idvideo,0,video.principal)" ><i class="fa fa-arrow-down"></i></button>
+                                        <button title="editar" class="btn btn-primary" ui-sref="videos.editar({idvideo:video.idvideo})"><i class="fa fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

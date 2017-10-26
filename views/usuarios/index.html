@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Usuarios</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row m-b">
+                        <div class="col-sm-12">
+                            <button ui-sref="config.usuarionuevo" class="m-r btn btn-primary btn-md"><i class="fa fa-plus"></i> Nuevo Usuario</button>
+                        </div>
+                    </div>
+                    <div class="row m-b">
+                      <div class="col-sm-12">
+                          <span class="label" style="background-color:#e28585; float: right !important">Desactivado</span>
+                      </div>
+                    </div>
+                    <div class="sk-spinner sk-spinner-wave" ng-if="loading">
+                        <div class="sk-rect1"></div>
+                        <div class="sk-rect2"></div>
+                        <div class="sk-rect3"></div>
+                        <div class="sk-rect4"></div>
+                        <div class="sk-rect5"></div>
+                    </div>
+
+                    <div class="table-responsive" ng-if="!loading">
+                        <table class="table table-stripped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th width="10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="usuario in usuarios" ng-class="{true: '', false: 'danger'}[usuario.activo]">
+                                    <td>{{usuario.nombre}}</td>
+                                    <td>{{usuario.correo}}</td>
+                                    <td class="text-center">
+                                        <button ui-sref="config.usuariosver({id:usuario.idusuario})" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> </button>
+                                        <button ng-if="usuario.activo" ng-disabled="usuario.idusuario == datos.idusuario" ng-click="desactivar(usuario.idusuario)" class="btn btn-danger btn-sm m-l"><i class="fa fa-ban"></i></button>
+                                        <button ng-if="!usuario.activo" ng-disabled="usuario.idusuario == datos.idusuario" ng-click="activar(usuario.idusuario)" class="btn btn-primary btn-sm m-l"><i class="fa fa-check"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

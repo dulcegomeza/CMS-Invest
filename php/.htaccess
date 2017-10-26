@@ -1,0 +1,9 @@
+# ROSEF.MX
+# For security reasons, Option followsymlinks cannot be overridden.
+#Options +SymLinksIfOwnerMatch
+Options +FollowSymLinks
+RewriteEngine On
+#RewriteBase /
+
+# TOKEN DE SEGURIDAD JSON
+RewriteRule .? - [E=Authorization:%{HTTP:Authorization}]

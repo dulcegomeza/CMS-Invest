@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h1>Captura de datos</h1>
+                </div>
+                <div class="ibox-content" ng-if="agregando">
+                    <div class="sk-spinner sk-spinner-fading-circle">
+                        <div class="sk-circle1 sk-circle"></div>
+                        <div class="sk-circle2 sk-circle"></div>
+                        <div class="sk-circle3 sk-circle"></div>
+                        <div class="sk-circle4 sk-circle"></div>
+                        <div class="sk-circle5 sk-circle"></div>
+                        <div class="sk-circle6 sk-circle"></div>
+                        <div class="sk-circle7 sk-circle"></div>
+                        <div class="sk-circle8 sk-circle"></div>
+                        <div class="sk-circle9 sk-circle"></div>
+                        <div class="sk-circle10 sk-circle"></div>
+                        <div class="sk-circle11 sk-circle"></div>
+                        <div class="sk-circle12 sk-circle"></div>
+                    </div>
+                </div>
+                <div class="ibox-content" ng-if="!agregando">
+                    <form class="form-horizontal" name="formaDato">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><i class="fa fa-asterisk"></i> Nombre del evento</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" ng-model="forma.nombre" required maxlength="255" disallow-multiple-spaces numbers-text-acute-only>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><i class="fa fa-asterisk"></i> Fecha del evento</label>
+                            <div class="col-sm-10">
+                                <div class="input-group date col-sm-2">
+                                    <input type="datetime" class="form-control" date-time view="date" auto-close="true" min-view="date" format="DD-MM-YYYY" ng-model="forma.fecha_evento" readonly>
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"><i class="fa fa-asterisk"></i> Tipo de Evento</label>
+                            <div class="col-md-10">
+                                <select class="form-control" ng-model="forma.tipo_evento" required>
+                                    <option value="Publico">P&uacute;blico</option>
+                                    <option value="Privado">Privado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><i class="fa fa-asterisk"></i> Lugar</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" ng-model="forma.lugar" required maxlength="255" disallow-multiple-spaces>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><i class="fa fa-asterisk"></i> Detalles</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" placeholder="" ng-model="forma.detalles" required disallow-multiple-spaces numbers-text-acute-only rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><i class="fa fa-asterisk"></i> Localizaci&oacute;n del evento</label>
+                            <div class="col-sm-10">
+                                <leaflet height="30em" center="center" width="100%" event-broadcast="events" markers="markers" controls="controls"  layers="layers"></leaflet>
+                            </div>
+                            <style>
+                                .awesome-marker i {
+                                    font-size: 20px;
+                                    margin-top: 8px;
+                                }
+                                .leaflet-map-pane {
+                                    z-index: 2 !important;
+                                }
+
+                                .leaflet-google-layer {
+                                    z-index: 1 !important;
+                                }
+
+                            </style>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Imagenes nuevas</label>
+                            <div class="col-md-10">
+                                <input type="file" class="form-control" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ng-model="forma.imagenes" name="file" ngf-max-size="20MB" ngf-max-files="20" ngf-multiple="true" ng-required="forma.rutas.length == 0">
+                            </div>
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-md-10">
+                                <img ng-repeat="img in forma.imagenes" ngf-thumbnail="img" width="150em" height="auto" style="margin:2px">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="forma.rutas.length > 0">
+                            <div class="hr-line-dashed"></div>
+                            <label class="col-sm-2 control-label">Imagenes actules</label>
+                            <div class="col-md-10">
+                                <figure class="snip1566" ng-repeat="ruta in forma.rutas">
+                                    <img ng-src="{{ruta.ruta}}" alt="sq-sample20" ng-click="eliminarImg(ruta.idevento_imagen)">
+                                    <figcaption ng-click="eliminarImg(ruta.idevento_imagen)"><i class="fa fa-trash"></i></figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <center>
+<!--                                <button type="button" class="btn btn-danger m-t-n-xs" ng-click="ver()">ver</button>-->
+                                <button type="button" class="btn btn-danger m-t-n-xs" ui-sref="eventos.index">Cancelar</button>
+                                <button type="button" class="btn btn-primary m-t-n-xs" ng-disabled="formaDato.$invalid || markers.length <= 0" ng-click="agregar()">Agregar</button>
+                            </center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
