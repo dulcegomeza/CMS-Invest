@@ -16,8 +16,39 @@
             <li ui-sref-active="active">
                 <a ui-sref="convocatorias.index"><i class="fa fa-file-picture-o"></i> <span class="nav-label">Convocatorias</span> </a>
             </li>
-            <li ui-sref-active="active">
-                <a ui-sref="galeria.index"><i class="fa fa-file-picture-o"></i> <span class="nav-label">Galer&iacute;a</span> </a>
+
+
+
+
+
+            <li ng-class="{active: $state.includes('config')}">
+                <a href="index.html"><i class="fa fa-file-picture-o"></i> <span class="nav-label">Galeria</span>
+                    <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('config')}">
+                    <li ui-sref-active="active">
+                        <a ui-sref="galeria.galeriaComercio"><i class="fa fa-file-picture-o"></i> <span class="nav-label"> Direcci&oacute;n de comercio y turismo</span> </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('config')}">
+                    <li ui-sref-active="active">
+                        <a ui-sref="galeria.galeriaIno"><i class="fa fa-file-picture-o"></i> <span class="nav-label">Direcci&oacute;n de centro de innovación socioeconómica y tecnológica</span> </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('config')}">
+                    <li ui-sref-active="active">
+                        <a ui-sref="galeria.galeriaEmpleo"><i class="fa fa-file-picture-o"></i> <span class="nav-label">Dirección de empleo y pymes</span> </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('config')}">
+                    <li ui-sref-active="active">
+                        <a ui-sref="galeria.galeriaDesarrollo"><i class="fa fa-file-picture-o"></i> <span class="nav-label"> Direcci&oacute;n de desarrollo rural</span> </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('config')}">
+                    <li ui-sref-active="active">
+                        <a ui-sref="galeria.galeriaFide"><i class="fa fa-file-picture-o"></i> <span class="nav-label"> Direcci&oacute;n de fideicomiso parque industrial progreso</span> </a>
+                    </li>
+                </ul>
             </li>
             <li ng-class="{active: $state.includes('config')}" ng-if="datos.config">
                 <a href="index.html"><i class="fa fa-cog"></i> <span class="nav-label">Configuraci&oacute;n</span>  <!-- Esto es la flecha para que le den click es solo un icono -->

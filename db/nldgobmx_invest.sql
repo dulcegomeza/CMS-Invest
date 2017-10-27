@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2017 a las 20:46:18
+-- Tiempo de generación: 27-10-2017 a las 20:47:44
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `nldgobmx_cultura`
+-- Base de datos: `nldgobmx_invest`
 --
 
 -- --------------------------------------------------------
@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `convocatorias` (
-    `idconvocatoria` int(255) NOT NULL,
-    `idusuario` int(255) NOT NULL,
-    `ruta` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-    `fecha_captura` datetime NOT NULL,
-    `activo` int(1) NOT NULL
+  `idconvocatoria` int(255) NOT NULL,
+  `idusuario` int(255) NOT NULL,
+  `ruta` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_captura` datetime NOT NULL,
+  `activo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -39,7 +39,11 @@ CREATE TABLE `convocatorias` (
 --
 
 INSERT INTO `convocatorias` (`idconvocatoria`, `idusuario`, `ruta`, `fecha_captura`, `activo`) VALUES
-(41, 1, 'img/convocatorias/118109909959ea43e25c6c8.jpg', '2017-10-20 13:43:46', 0);
+(41, 1, 'img/convocatorias/118109909959ea43e25c6c8.jpg', '2017-10-20 13:43:46', 1),
+(42, 1, 'img/convocatorias/104975868259ee27dfe9dd5.png', '2017-10-23 12:33:19', 1),
+(43, 1, 'img/convocatorias/18309744459ee27f569c01.png', '2017-10-23 12:33:41', 1),
+(44, 1, 'img/convocatorias/7079025859ee280702e51.png', '2017-10-23 12:33:59', 1),
+(45, 1, 'img/convocatorias/84206273659f0ed4f5cab5.jpg', '2017-10-25 15:00:15', 0);
 
 -- --------------------------------------------------------
 
@@ -48,18 +52,18 @@ INSERT INTO `convocatorias` (`idconvocatoria`, `idusuario`, `ruta`, `fecha_captu
 --
 
 CREATE TABLE `eventos` (
-    `idevento` int(255) NOT NULL,
-    `idusuario` int(255) NOT NULL,
-    `nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-    `tipo_evento` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-    `lugar` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-    `detalles` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-    `latitud` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-    `longitud` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-    `fecha_captura` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `fecha_evento` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `principal` int(1) NOT NULL,
-    `activo` int(1) NOT NULL
+  `idevento` int(255) NOT NULL,
+  `idusuario` int(255) NOT NULL,
+  `nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_evento` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `lugar` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `detalles` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `latitud` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `longitud` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_captura` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha_evento` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `principal` int(1) NOT NULL,
+  `activo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -68,19 +72,25 @@ CREATE TABLE `eventos` (
 
 INSERT INTO `eventos` (`idevento`, `idusuario`, `nombre`, `tipo_evento`, `lugar`, `detalles`, `latitud`, `longitud`, `fecha_captura`, `fecha_evento`, `principal`, `activo`) VALUES
 (6, 1, 'BALLET LA BELLA DURMIENTE', 'Publico', 'Teatro principal del Centro Cultural', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.', '27.469992029422', '-99.507592023583', '2017-05-08 21:05:47', '2017-05-08 22:05:38', 0, 0),
-(7, 1, 'MUESTRA GASTRONOMICA', 'Publico', 'Cueva leonistica', 'Lorem ipsum dolor sit amet consectetuer adipiscing elit Aenean commodo ligula eget dolor Aenean massa Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus Donec quam felis ultricies nec pellentesque eu pretium', '27.470658236875', '-99.510955587029', '2017-05-08 22:05:19', '2017-05-09 00:05:16', 0, 1),
-(8, 1, 'CARRERA 10K', 'Privado', 'Eva samano-catedral del espiritu', 'La carrera se llevara acabo a las 7:00 am, en la calle eva samano, enfrente de la catedral del espiritu el dia ', '27.469934780653', '-99.507307782769', '2017-05-08 22:05:19', '2017-05-03 12:05:00', 0, 1),
-(9, 1, 'obra musical lo siento mi amor', 'Publico', 'Teatro principal del centro cultural', 'Va aser al as 7 pm organizado por la direccion de comercio y turismo', '27.485507078369', '-99.529072567821', '2017-05-26 20:05:20', '2017-06-25 12:06:00', 0, 1),
-(10, 1, 'torneo de golf', 'Privado', 'Club campestre', 'Se llevara a cabo a las 8:00 am', '27.47078020878955', '-99.51963856816292', '2017-05-26 21:05:35', '2017-05-27 02:05:36', 0, 1),
-(11, 1, 'xcvxcv', 'Publico', 'xcv', 'cxvcxv', '27.4548277916609', '-99.4855134934187', '2017-05-30 21:05:42', '2017-05-30 22:05:25', 0, 1),
-(12, 1, 'cxv', 'Publico', 'cxv', 'xcvxv', '27.474862481507213', '-99.53233413398266', '2017-05-30 21:05:56', '2017-05-30 22:05:43', 0, 1),
-(13, 1, 'xcv', 'Publico', 'cxb', 'cxv', '27.46943978155436', '-99.52353648841381', '2017-05-30 21:05:08', '2017-05-30 22:05:57', 0, 1),
-(14, 1, 'Honores por el aniversario de fundacion de la ciudad', 'Publico', 'xcvbzx', 'bxzcbcvb', '27.471990906957306', '-99.51349429786205', '2017-05-30 21:05:22', '2017-05-30 23:05:11', 0, 1),
-(15, 1, 'Paseando por la paseo', 'Publico', 'xcb', 'xcb', '27.469923073394348', '-99.52933743596077', '2017-05-30 21:05:43', '2017-05-31 00:05:23', 0, 1),
-(16, 1, 'Concierto por aniversario 150 aÃ±os de Nuevo Laredo', 'Publico', 'xcb', 'xcb', '27.468190627062732', '-99.5119996368885', '2017-05-31 18:05:25', '2017-05-31 21:05:13', 0, 1),
-(17, 1, 'Ballet bella durmiente', 'Publico', 'xcb', 'xcb', '27.47054101742417', '-99.51775029301642', '2017-05-31 18:05:40', '2017-05-31 21:05:27', 0, 1),
-(18, 1, 'Feria Expo mex Nuevo Laredo', 'Publico', 'xcvbvb', 'vbbv', '27.45451366828467', '-99.44337062537669', '2017-05-31 18:05:58', '2017-05-31 21:05:43', 1, 1),
-(19, 1, 'Carrera 10 km', 'Publico', 'xcvbvc', 'cvbv', '27.472866652807', '-99.516455456614', '2017-06-06 19:06:21', '2017-06-07 00:06:09', 0, 1);
+(7, 1, 'MUESTRA GASTRONOMICA', 'Publico', 'Cueva leonistica', 'Lorem ipsum dolor sit amet consectetuer adipiscing elit Aenean commodo ligula eget dolor Aenean massa Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus Donec quam felis ultricies nec pellentesque eu pretium', '27.470658236875', '-99.510955587029', '2017-05-08 22:05:19', '2017-05-09 00:05:16', 0, 0),
+(8, 1, 'CARRERA 10K', 'Privado', 'Eva samano-catedral del espiritu', 'La carrera se llevara acabo a las 7:00 am, en la calle eva samano, enfrente de la catedral del espiritu el dia ', '27.469934780653', '-99.507307782769', '2017-05-08 22:05:19', '2017-05-03 12:05:00', 0, 0),
+(9, 1, 'obra musical lo siento mi amor', 'Publico', 'Teatro principal del centro cultural', 'Va aser al as 7 pm organizado por la direccion de comercio y turismo', '27.485507078369', '-99.529072567821', '2017-05-26 20:05:20', '2017-06-25 12:06:00', 0, 0),
+(10, 1, 'torneo de golf', 'Privado', 'Club campestre', 'Se llevara a cabo a las 8:00 am', '27.47078020878955', '-99.51963856816292', '2017-05-26 21:05:35', '2017-05-27 02:05:36', 0, 0),
+(11, 1, 'xcvxcv', 'Publico', 'xcv', 'cxvcxv', '27.4548277916609', '-99.4855134934187', '2017-05-30 21:05:42', '2017-05-30 22:05:25', 0, 0),
+(12, 1, 'cxv', 'Publico', 'cxv', 'xcvxv', '27.474862481507213', '-99.53233413398266', '2017-05-30 21:05:56', '2017-05-30 22:05:43', 0, 0),
+(13, 1, 'xcv', 'Publico', 'cxb', 'cxv', '27.46943978155436', '-99.52353648841381', '2017-05-30 21:05:08', '2017-05-30 22:05:57', 0, 0),
+(14, 1, 'Honores por el aniversario de fundacion de la ciudad', 'Publico', 'xcvbzx', 'bxzcbcvb', '27.471990906957306', '-99.51349429786205', '2017-05-30 21:05:22', '2017-05-30 23:05:11', 0, 0),
+(15, 1, 'Paseando por la paseo', 'Publico', 'xcb', 'xcb', '27.469923073394348', '-99.52933743596077', '2017-05-30 21:05:43', '2017-05-31 00:05:23', 0, 0),
+(16, 1, 'Concierto por aniversario 150 aÃ±os de Nuevo Laredo', 'Publico', 'xcb', 'xcb', '27.468190627062732', '-99.5119996368885', '2017-05-31 18:05:25', '2017-05-31 21:05:13', 0, 0),
+(17, 1, 'Ballet bella durmiente', 'Publico', 'xcb', 'xcb', '27.47054101742417', '-99.51775029301642', '2017-05-31 18:05:40', '2017-05-31 21:05:27', 0, 0),
+(18, 1, 'Feria Expo mex Nuevo Laredo', 'Publico', 'xcvbvb', 'vbbv', '27.45451366828467', '-99.44337062537669', '2017-05-31 18:05:58', '2017-05-31 21:05:43', 0, 0),
+(19, 1, 'Carrera 10 km', 'Publico', 'xcvbvc', 'cvbv', '27.472866652807', '-99.516455456614', '2017-06-06 19:06:21', '2017-06-07 00:06:09', 0, 0),
+(20, 1, 'festival de la catrina', 'Publico', 'explanada', 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', '27.471115154148', '-99.543508887291', '2017-10-23 19:10:03', '2017-11-01 04:10:00', 0, 1),
+(21, 1, 'DÃ­a de Muertos', 'Publico', 'panteon', 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', '27.48352734847816', '-99.55547656863928', '2017-10-23 19:10:10', '2017-10-23 19:10:39', 0, 1),
+(22, 1, 'cabalgata', 'Publico', 'centro cultural', 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', '27.47210513507154', '-99.500382989645', '2017-10-23 19:10:58', '2017-10-25 05:10:00', 0, 1),
+(23, 1, 'funcion de cine antiguo', 'Publico', 'estacion palabra', 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', '27.48845757129823', '-99.51755306683481', '2017-10-23 19:10:20', '2017-10-23 19:10:06', 0, 1),
+(24, 1, 'Soporte Papel', 'Publico', 'Centro Cultural', 'ExposiciÃ³n de Arte', '27.425642605327', '-99.507157579064', '2017-10-24 18:10:16', '2017-10-31 05:10:00', 1, 1),
+(25, 1, 'Jueves de Museos', 'Publico', 'Museo Reyes Meza', 'ExposiciÃ³n de Arte digital', '27.425033130683', '-99.509088769555', '2017-10-24 20:10:54', '2017-10-26 05:10:00', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -89,11 +99,11 @@ INSERT INTO `eventos` (`idevento`, `idusuario`, `nombre`, `tipo_evento`, `lugar`
 --
 
 CREATE TABLE `eventos_imagenes` (
-    `idevento_imagen` int(255) NOT NULL,
-    `idevento` int(255) NOT NULL,
-    `idusuario` int(255) NOT NULL,
-    `fecha` datetime NOT NULL,
-    `ruta` varchar(250) COLLATE utf8_unicode_ci NOT NULL
+  `idevento_imagen` int(255) NOT NULL,
+  `idevento` int(255) NOT NULL,
+  `idusuario` int(255) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `ruta` varchar(250) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -134,7 +144,13 @@ INSERT INTO `eventos_imagenes` (`idevento_imagen`, `idevento`, `idusuario`, `fec
 (33, 15, 1, '2017-05-31 13:43:25', 'img/eventos/15/1000747188592f1cdd7bb3f.jpeg'),
 (34, 15, 1, '2017-05-31 13:43:25', 'img/eventos/15/938601652592f1cdd7c695.jpg'),
 (35, 15, 1, '2017-05-31 13:43:25', 'img/eventos/15/604425627592f1cdd7d18e.jpg'),
-(37, 19, 1, '2017-06-08 15:18:30', 'img/eventos/19/4546085085939bf2630da5.jpg');
+(37, 19, 1, '2017-06-08 15:18:30', 'img/eventos/19/4546085085939bf2630da5.jpg'),
+(39, 21, 1, '2017-10-23 14:36:10', 'img/eventos/21/89975605459ee44aa3c07f.jpg'),
+(40, 22, 1, '2017-10-23 14:39:58', 'img/eventos/22/19905122459ee458e8caa8.jpg'),
+(41, 23, 1, '2017-10-23 14:46:20', 'img/eventos/23/121426811959ee470ccc3a0.jpg'),
+(42, 20, 1, '2017-10-23 15:16:44', 'img/eventos/20/55656428959ee4e2c81f91.jpg'),
+(43, 24, 1, '2017-10-24 13:26:16', 'img/eventos/24/83824124959ef85c8c100f.jpg'),
+(44, 25, 1, '2017-10-24 15:03:54', 'img/eventos/25/78021401559ef9caadd67a.jpg');
 
 -- --------------------------------------------------------
 
@@ -143,19 +159,31 @@ INSERT INTO `eventos_imagenes` (`idevento_imagen`, `idevento`, `idusuario`, `fec
 --
 
 CREATE TABLE `galeria` (
-    `idgaleria` int(255) NOT NULL,
-    `idusuario` int(255) NOT NULL,
-    `ruta` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-    `fecha_captura` datetime NOT NULL,
-    `activo` int(1) NOT NULL
+  `idgaleria` int(255) NOT NULL,
+  `idusuario` int(255) NOT NULL,
+  `ruta` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_captura` datetime NOT NULL,
+  `activo` int(1) NOT NULL,
+  `iddireccion` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `galeria`
 --
 
-INSERT INTO `galeria` (`idgaleria`, `idusuario`, `ruta`, `fecha_captura`, `activo`) VALUES
-(2, 1, 'img/galeria/106044400459ea444c77234.jpg', '2017-10-20 13:45:32', 0);
+INSERT INTO `galeria` (`idgaleria`, `idusuario`, `ruta`, `fecha_captura`, `activo`, `iddireccion`) VALUES
+(2, 1, 'img/galeria/106044400459ea444c77234.jpg', '2017-10-20 13:45:32', 0, 1),
+(3, 1, 'img/galeria/87849671659ee354400c04.jpg', '2017-10-23 13:30:28', 0, 2),
+(4, 1, 'img/galeria/111954719259ee354415d11.png', '2017-10-23 13:30:28', 0, 3),
+(5, 1, 'img/galeria/77776529559ee354e1a709.png', '2017-10-23 13:30:38', 0, 4),
+(6, 1, 'img/galeria/53070432659ee354e25e73.jpg', '2017-10-23 13:30:38', 0, 5),
+(7, 1, 'img/galeria/20046109259f0f0796ec26.jpg', '2017-10-25 15:13:45', 0, 1),
+(8, 1, 'img/galeria/30160063359f0f08c30fb9.png', '2017-10-25 15:14:04', 0, 1),
+(9, 1, 'img/galeria/834790759f369e65f320.png', '2017-10-27 12:16:22', 0, 1),
+(10, 1, 'img/galeria/48514330059f36a5eacaa9.png', '2017-10-27 12:18:22', 0, 2),
+(11, 1, 'img/galeria/7349869059f36a69a98bf.png', '2017-10-27 12:18:33', 0, 3),
+(12, 1, 'img/galeria/24654154459f3703f2598e.png', '2017-10-27 12:43:27', 0, 4),
+(13, 1, 'img/galeria/94542838659f372cadfc1c.png', '2017-10-27 12:54:18', 0, 5);
 
 -- --------------------------------------------------------
 
@@ -164,13 +192,13 @@ INSERT INTO `galeria` (`idgaleria`, `idusuario`, `ruta`, `fecha_captura`, `activ
 --
 
 CREATE TABLE `noticias` (
-    `idnoticia` int(255) NOT NULL,
-    `idusuario` int(255) NOT NULL,
-    `titulo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-    `contenido` varchar(3000) COLLATE utf8_spanish_ci NOT NULL,
-    `fecha_captura` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `fecha_noticia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `activo` int(1) NOT NULL
+  `idnoticia` int(255) NOT NULL,
+  `idusuario` int(255) NOT NULL,
+  `titulo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `contenido` varchar(3000) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_captura` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha_noticia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `activo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -191,11 +219,11 @@ INSERT INTO `noticias` (`idnoticia`, `idusuario`, `titulo`, `contenido`, `fecha_
 --
 
 CREATE TABLE `slider` (
-    `idslider` int(255) NOT NULL,
-    `idusuario` int(255) NOT NULL,
-    `ruta` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-    `fecha_captura` datetime NOT NULL,
-    `activo` int(1) NOT NULL
+  `idslider` int(255) NOT NULL,
+  `idusuario` int(255) NOT NULL,
+  `ruta` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_captura` datetime NOT NULL,
+  `activo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -203,7 +231,8 @@ CREATE TABLE `slider` (
 --
 
 INSERT INTO `slider` (`idslider`, `idusuario`, `ruta`, `fecha_captura`, `activo`) VALUES
-(40, 1, 'img/slider/28609207659ea3f7c40498.png', '2017-10-20 13:25:00', 0);
+(40, 1, 'img/slider/28609207659ea3f7c40498.png', '2017-10-20 13:25:00', 0),
+(41, 1, 'img/slider/63792856459f0d713b3889.jpg', '2017-10-25 13:25:23', 1);
 
 -- --------------------------------------------------------
 
@@ -212,10 +241,10 @@ INSERT INTO `slider` (`idslider`, `idusuario`, `ruta`, `fecha_captura`, `activo`
 --
 
 CREATE TABLE `tipos_usuarios` (
-    `idtipo_usuario` int(255) NOT NULL,
-    `tipo_usuario` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-    `config` int(1) NOT NULL,
-    `activo` int(1) NOT NULL
+  `idtipo_usuario` int(255) NOT NULL,
+  `tipo_usuario` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `config` int(1) NOT NULL,
+  `activo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -233,13 +262,13 @@ INSERT INTO `tipos_usuarios` (`idtipo_usuario`, `tipo_usuario`, `config`, `activ
 --
 
 CREATE TABLE `usuarios` (
-    `idusuario` int(255) NOT NULL,
-    `idtipo_usuario` int(255) NOT NULL,
-    `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-    `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-    `password` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-    `ip` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-    `activo` int(1) NOT NULL
+  `idusuario` int(255) NOT NULL,
+  `idtipo_usuario` int(255) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `ip` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `activo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -247,7 +276,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idusuario`, `idtipo_usuario`, `nombre`, `correo`, `password`, `ip`, `activo`) VALUES
-(1, 1, 'admin', 'diego@correo.com', '21232f297a57a5a743894a0e4a801fc3', '', 1),
+(1, 1, 'admin', 'admin@hotmail.com', '21232f297a57a5a743894a0e4a801fc3', '', 1),
 (2, 2, '1', '1@1.com', 'c4ca4238a0b923820dcc509a6f75849b', '', 1),
 (3, 2, 'manager', '1@11.com', 'c4ca4238a0b923820dcc509a6f75849b', '', 1);
 
@@ -258,13 +287,13 @@ INSERT INTO `usuarios` (`idusuario`, `idtipo_usuario`, `nombre`, `correo`, `pass
 --
 
 CREATE TABLE `videos` (
-    `idvideo` int(255) NOT NULL,
-    `idusuario` int(255) NOT NULL,
-    `titulo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-    `url` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-    `fecha_captura` datetime NOT NULL,
-    `principal` int(1) NOT NULL,
-    `activo` int(1) NOT NULL
+  `idvideo` int(255) NOT NULL,
+  `idusuario` int(255) NOT NULL,
+  `titulo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_captura` datetime NOT NULL,
+  `principal` int(1) NOT NULL,
+  `activo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -280,7 +309,8 @@ INSERT INTO `videos` (`idvideo`, `idusuario`, `titulo`, `url`, `fecha_captura`, 
 (6, 1, 'sdss', 'https://www.facebook.com/146120188911322/videos/626269670896369/', '2017-05-31 10:05:41', 0, 0),
 (7, 1, 'cc', 'https://www.facebook.com/146120188911322/videos/626269670896369/', '2017-05-31 10:05:45', 0, 1),
 (8, 1, 'en vivo', 'https://www.facebook.com/elshowdepiolin/videos/10155033671529442/', '2017-06-12 09:06:37', 0, 0),
-(9, 1, 'video envivo 2', 'https://www.facebook.com/kardenaz.dz/videos/10212722825887644/', '2017-06-12 10:06:52', 0, 0);
+(9, 1, 'video envivo 2', 'https://www.facebook.com/kardenaz.dz/videos/10212722825887644/', '2017-06-12 10:06:52', 0, 0),
+(10, 1, 'Naturaleza y TradiciÃ³n', 'https://www.facebook.com/146120188911322/videos/626269670896369/', '2017-10-25 12:10:49', 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -355,22 +385,22 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT de la tabla `convocatorias`
 --
 ALTER TABLE `convocatorias`
-  MODIFY `idconvocatoria` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `idconvocatoria` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `idevento` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idevento` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `eventos_imagenes`
 --
 ALTER TABLE `eventos_imagenes`
-  MODIFY `idevento_imagen` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `idevento_imagen` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `galeria`
 --
 ALTER TABLE `galeria`
-  MODIFY `idgaleria` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idgaleria` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `noticias`
 --
@@ -380,7 +410,7 @@ ALTER TABLE `noticias`
 -- AUTO_INCREMENT de la tabla `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `idslider` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `idslider` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT de la tabla `tipos_usuarios`
 --
@@ -395,7 +425,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `idvideo` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idvideo` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Restricciones para tablas volcadas
 --
