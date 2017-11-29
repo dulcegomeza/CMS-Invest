@@ -4,9 +4,9 @@ header("Access-Control-Allow-Headers: Authorization");
 
 include 'db.php';
 
-$idevento_imagen = mysql_real_escape_string($_GET['idevento_imagen']);
+$idnoticia = mysql_real_escape_string($_GET['idnoticia']);
 
-$sql = "DELETE FROM eventos_imagenes WHERE idevento_imagen = '$idevento_imagen'";
+$sql = "UPDATE noticias SET activo = 0 WHERE idnoticia = '$idnoticia'";
 
 if(mysql_query($sql)){
     $json = array("status"=>true);

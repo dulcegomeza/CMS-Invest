@@ -4,7 +4,7 @@ angular
     .service("login", function($q, localStorageService) {
 
         this.isLogin = function(){
-            if (localStorageService.get("token_cms_cultura")){
+            if (localStorageService.get("token_cms_invest")){
                 return true;
             } else {
                 return false;
@@ -12,16 +12,16 @@ angular
         };
 
         this.usuario = function(){
-            var usuario = localStorageService.get("datos_cms_cultura");
+            var usuario = localStorageService.get("datos_cms_invest");
             return usuario;
         };
     })
     .controller('MainCtrl', function($rootScope, $scope, localStorageService, $rootScope, $state) {
-        $rootScope.datos = localStorageService.get('datos_cms_cultura');
+        $rootScope.datos = localStorageService.get('datos_cms_invest');
 
         $scope.salir = function(){
-            localStorageService.remove('datos_cms_cultura');
-            localStorageService.remove('token_cms_cultura');
+            localStorageService.remove('datos_cms_invest');
+            localStorageService.remove('token_cms_invest');
             $rootScope.datos = null;
             $state.go('login');
         };
@@ -30,7 +30,7 @@ angular
     /* LOGIN */
     .controller('indexCtrl', function($rootScope, $scope, $http, localStorageService, $state){
         if($rootScope.datos){
-            $state.go('eventos.index');
+            $state.go('noticias.index');
         }
 
         $scope.forma = {
@@ -48,9 +48,9 @@ angular
             }).success(function (data, status, headers, config){
                 $scope.loading = false;
                 if (data.login){
-                    localStorageService.set('datos_cms_cultura', data.datos);
-                    localStorageService.set('token_cms_cultura', data.token);
-                    $state.go('eventos.index');
+                    localStorageService.set('datos_cms_invest', data.datos);
+                    localStorageService.set('token_cms_invest', data.token);
+                    $state.go('noticias.index');
                 } else {
                     $scope.error = data.error;
                 }
