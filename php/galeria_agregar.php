@@ -6,6 +6,7 @@ include 'db.php';
 
 $servidor = $_SERVER['DOCUMENT_ROOT'];
 $idusuario = $_POST['idusuario'];
+$iddireccion = $_POST['iddireccion'];
 $ruta = $servidor.$app.$carpeta_galeria;
 $json = array();
 
@@ -24,9 +25,9 @@ $json = array();
                 $name = uniqid(rand(0, 99999999999)).".".$ext;
                 move_uploaded_file($tmp_name,$ruta.$name);
                 if(file_exists($ruta.$name)){
-                    $sqlImagen = "INSERT INTO galeria(idusuario, fecha_captura, ruta, activo) VALUES( '$idusuario', now(), '$carpeta_galeria$name','0')";
+                    $sqlImagen = "INSERT INTO galeria(idusuario, fecha_captura, ruta, activo,iddireccion) VALUES( '$idusuario', now(), '$carpeta_galeria$name','0','$iddireccion')";
                     mysql_query($sqlImagen);
-                    $json = array("status"=>true);
+                    $json = array("status"=>true,"querry"=>$sqlImagen);
                 }
             }
         }

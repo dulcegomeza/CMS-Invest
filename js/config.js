@@ -303,10 +303,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpPr
             authenticate: true,
             permitidos:[1,2]
         })
-        .state('galeria.index', {
-            url: "/index",
+        .state('galeria.galeriaComercio', {
+        url: "/galeriaComercio",
             templateUrl: "views/galeria/index.html",
-            controller: "Galeria",
+        controller: "CtrlComercio",
             authenticate: true,
             permitidos:[1,2],
             resolve: {
@@ -323,10 +323,91 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpPr
                 }
             }
         })
-        .state('galeria.agregar', {
-            url: "/agregar",
+        .state('galeria.galeriaDesarrollo', {
+        url: "/galeriaDesarrollo",
+        templateUrl: "views/galeriaDesarrollo/index.html",
+        controller: "CtrlDesarrollo",
+        authenticate: true,
+        permitidos:[1,2],
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                    },
+                    {
+                        name: 'oitozero.ngSweetAlert',
+                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    }
+                ]);
+            }
+        }
+    })
+        .state('galeria.galeriaEmpleo', {
+        url: "/galeriaEmpleo",
+        templateUrl: "views/galeriaEmpleo/index.html",
+        controller: "CtrlEmpleo",
+        authenticate: true,
+        permitidos:[1,2],
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                    },
+                    {
+                        name: 'oitozero.ngSweetAlert',
+                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    }
+                ]);
+            }
+        }
+    })
+        .state('galeria.galeriaFide', {
+        url: "/galeriaFide",
+        templateUrl: "views/galeriaFide/index.html",
+        controller: "CtrlFide",
+        authenticate: true,
+        permitidos:[1,2],
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                    },
+                    {
+                        name: 'oitozero.ngSweetAlert',
+                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    }
+                ]);
+            }
+        }
+    })
+
+        .state('galeria.galeriaIno', {
+        url: "/galeriaIno",
+        templateUrl: "views/galeriaIno/index.html",
+        controller: "CtrlIno",
+        authenticate: true,
+        permitidos:[1,2],
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                    },
+                    {
+                        name: 'oitozero.ngSweetAlert',
+                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    }
+                ]);
+            }
+        }
+    })
+        .state('galeria.agregar_comercio', {
+            url: "/agregar_comercio",
             templateUrl: "views/galeria/agregar.html",
-            controller: "GaleriaNueva",
+            controller: "CtrlComercioAgregar",
             authenticate: true,
             permitidos:[1,2],
             resolve: {
@@ -350,6 +431,118 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpPr
                 }
             }
         })
+
+        .state('galeria.agregar_ino', {
+        url: "/agregar_ino",
+        templateUrl: "views/galeriaIno/agregar.html",
+        controller: "CtrlInoAgregar",
+        authenticate: true,
+        permitidos:[1,2],
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+                    },
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                    },
+                    {
+                        name: 'oitozero.ngSweetAlert',
+                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    },
+                    {
+                        name: 'datePicker',
+                        files: ['css/plugins/datapicker/angular-datapicker.css','js/plugins/datapicker/angular-datepicker.js']
+                    }
+                ]);
+            }
+        }
+    })
+
+        .state('galeria.agregar_empleo', {
+        url: "/agregar_empleo",
+        templateUrl: "views/galeriaEmpleo/agregar.html",
+        controller: "CtrlEmpleoAgregar",
+        authenticate: true,
+        permitidos:[1,2],
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+                    },
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                    },
+                    {
+                        name: 'oitozero.ngSweetAlert',
+                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    },
+                    {
+                        name: 'datePicker',
+                        files: ['css/plugins/datapicker/angular-datapicker.css','js/plugins/datapicker/angular-datepicker.js']
+                    }
+                ]);
+            }
+        }
+    })
+        .state('galeria.agregar_desarrollo', {
+        url: "/agregar_desarrollo",
+        templateUrl: "views/galeriaDesarrollo/agregar.html",
+        controller: "CtrlDesarrolloAgregar",
+        authenticate: true,
+        permitidos:[1,2],
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+                    },
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                    },
+                    {
+                        name: 'oitozero.ngSweetAlert',
+                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    },
+                    {
+                        name: 'datePicker',
+                        files: ['css/plugins/datapicker/angular-datapicker.css','js/plugins/datapicker/angular-datepicker.js']
+                    }
+                ]);
+            }
+        }
+    })
+
+        .state('galeria.agregar_fide', {
+        url: "/agregar_fide",
+        templateUrl: "views/galeriaFide/agregar.html",
+        controller: "CtrlFideAgregar",
+        authenticate: true,
+        permitidos:[1,2],
+        resolve: {
+            loadPlugin: function ($ocLazyLoad) {
+                return $ocLazyLoad.load([
+                    {
+                        files: ['js/plugins/jasny/jasny-bootstrap.min.js']
+                    },
+                    {
+                        files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                    },
+                    {
+                        name: 'oitozero.ngSweetAlert',
+                        files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                    },
+                    {
+                        name: 'datePicker',
+                        files: ['css/plugins/datapicker/angular-datapicker.css','js/plugins/datapicker/angular-datepicker.js']
+                    }
+                ]);
+            }
+        }
+    })
+
         .state('slider', {
             abstract: true,
             url: "/slider",
