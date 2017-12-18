@@ -77,7 +77,7 @@ angular
 
         if(!$stateParams.idgaleria){
             $scope.forma = {
-                idgaleria: 0,
+                idgaleria: 4,
                 idusuario: $rootScope.datos.idusuario,
                 activo: 0,
                 imagenes: [],
@@ -87,6 +87,7 @@ angular
         }
 
         $scope.agregar = function(){
+            $scope.loading = true;
             Upload.upload({
                 url:'php/galeria_agregar.php',
                 data: $scope.forma,
