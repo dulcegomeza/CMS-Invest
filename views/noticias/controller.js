@@ -85,6 +85,7 @@ angular
                 data: $scope.forma,
                 method: 'POST'
             }).then(function(responce){
+                console.log(responce.data);
                 if(responce.data.status){
                     $state.go("noticias.index");
                 }
