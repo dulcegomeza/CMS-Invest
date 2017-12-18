@@ -7,6 +7,7 @@ include 'db.php';
 $servidor = $_SERVER['DOCUMENT_ROOT'];
 $idusuario = $_POST['idusuario'];
 $iddireccion = $_POST['iddireccion'];
+$idgaleria = $_POST['idgaleria'];
 $ruta = $servidor.$app.$carpeta_galeria;
 $json = array();
 
@@ -14,6 +15,8 @@ $json = array();
     if (!file_exists($ruta)) {
         mkdir($ruta, 0777, true);
     }
+
+
 
     //subir imagenes
     if(isset($_FILES['imagenes'])){
@@ -23,9 +26,9 @@ $json = array();
                 $tmp_name = $imagenes["tmp_name"][$key];
                 $ext = pathinfo($imagenes["name"][$key], PATHINFO_EXTENSION);
                 $name = uniqid(rand(0, 99999999999)).".".$ext;
-                move_uploaded_file($tmp_name,$ruta.$name);
-                if(file_exists($ruta.$name)){
-                    $sqlImagen = "INSERT INTO galeria(idusuario, fecha_captura, ruta, activo,iddireccion) VALUES( '$idusuario', now(), '$carpeta_galeria$name','0','$iddireccion')";
+                move_uploaded_file($tmp_name,$ruta.$idgaleria.'/'.$name);
+                if(file_exists($ruta.$idgaleria.'/'.$name)){
+                    $sqlImagen = "INSERT INTO galeria(idusuario, fecha_captura, ruta, activo,iddireccion) VALUES( '$idusuario', now(), '$carpeta_galeria$idgaleria/$name','0','$iddireccion')";
                     mysql_query($sqlImagen);
                     $json = array("status"=>true,"querry"=>$sqlImagen);
                 }

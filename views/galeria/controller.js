@@ -74,10 +74,10 @@ angular
     }])
     .controller('CtrlComercioAgregar', ['$rootScope', '$scope', '$http', '$stateParams', 'SweetAlert', '$state', 'Upload', function($rootScope, $scope, $http, $stateParams, SweetAlert, $state, Upload){
         var date = new Date();
-
+        $scope.loading = false;
         if(!$stateParams.idgaleria){
             $scope.forma = {
-                idgaleria: 0,
+                idgaleria: 1,
                 idusuario: $rootScope.datos.idusuario,
                 activo: 0,
                 imagenes: [],
@@ -87,6 +87,7 @@ angular
         }
 
         $scope.agregar = function(){
+            $scope.loading = true;
             console.log("entro");
             Upload.upload({
                 url:'php/galeria_agregar.php',
