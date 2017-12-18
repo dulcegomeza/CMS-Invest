@@ -82,7 +82,7 @@ angular
         }
     }])
     .controller('VideoNuevo', ['$rootScope', '$scope', '$http', '$stateParams',  '$uibModal', '$state', 'toaster', function($rootScope, $scope, $http, $stateParams,  $uibModal, $state, toaster){
-
+        $scope.agregando=false;
         if(!$stateParams.idvideo){
             $scope.forma = {
                 idvideo: 0,
@@ -111,10 +111,11 @@ angular
 
 
         $scope.agregar = function(){
-
+            $scope.agregando=true;
             var n =$scope.forma.url.search("facebook.com/");
             if(n == -1){
                 verToaster("Debe ingresar la  url de un video de Facebook");
+                $scope.agregando=false;
                 return;
             }
             var restante = $scope.forma.url.indexOf("&");
@@ -132,12 +133,14 @@ angular
                 headers: {'Content-Type': undefined},
                 data: JSON.stringify($scope.forma)
             }).success(function (data, status, headers, config) {
+                $scope.agregando=false;
                 if (data.error) {
                     verToaster(data.error);
                 }else{
                     $state.go("videos.index");
                 }
             }).error(function (data, status, headers, config) {
+                $scope.agregando=false;
                 console.log(status)
             });
         };

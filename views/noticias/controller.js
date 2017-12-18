@@ -54,7 +54,7 @@ angular
     }])
     .controller('NoticiaNueva', ['$rootScope', '$scope', '$http', '$stateParams', 'SweetAlert', '$state', 'Upload', function($rootScope, $scope, $http, $stateParams, SweetAlert, $state, Upload){
         var date = new Date();
-
+        $scope.agregando=false;
         if(!$stateParams.idnoticia){
             $scope.forma = {
                 idnoticia: 0,
@@ -71,6 +71,7 @@ angular
             $http.get('php/noticia.php?idnoticia='+$stateParams.idnoticia).success(function(response) {
                 $scope.forma = response;
                 $scope.forma.idusuario = $rootScope.datos.idusuario;
+                console.log(response);
             });
         }
 
@@ -79,6 +80,7 @@ angular
         }
 
         $scope.agregar = function(){
+            $scope.agregando=true;
             $scope.forma.fecha_noticia = moment($scope.forma.fecha_noticia).toDate();
             Upload.upload({
                 url:'php/noticias_agregar.php',
@@ -86,11 +88,13 @@ angular
                 method: 'POST'
             }).then(function(responce){
                 console.log(responce.data);
+                $scope.agregando=false;
                 if(responce.data.status){
                     $state.go("noticias.index");
                 }
             }, function (resp) {
                 console.log('Error status: ' + resp.status);
+                $scope.agregando=false;
             });
         }
 
