@@ -18,7 +18,5 @@ $hora   = date("H:i:s");
 
 $app = "/CMS-Invest/";
 $carpeta_galeria = "img/galeria/";
-$carpeta_slider = "img/slider/";
-$carpeta_convocatorias = "img/convocatorias/";
-$carpeta_eventos = "img/eventos/";
+$carpeta_noticias = "img/noticias/";
 ?>
