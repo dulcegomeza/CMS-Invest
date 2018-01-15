@@ -550,11 +550,11 @@ angular
                 $rootScope.datos = localStorageService.get("datos_cms_invest");
                 $rootScope.nombre = $rootScope.datos.nombre;
                 if(toState.name == "login"){
-                    $state.go("noticias.index");
+                    $state.go("videos.index");
                 }
                 if(toState.permitidos){
                     if(toState.permitidos.indexOf($rootScope.datos.idtipo_usuario) == -1){
-                        $state.go("noticias.index");
+                        $state.go("videos.index");
                         event.preventDefault();
                     }
                 }
