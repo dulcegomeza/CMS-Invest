@@ -37,7 +37,7 @@
                             <tbody>
                                 <tr ng-repeat="ga in galeria" ng-class="{true: 'info', false:''} [ga.activo==0]">
                                     <td>{{ga.idgaleria}}</td>
-                                    <td><center><img width="100" ng-src="{{ga.ruta}}" ></img></center></td>
+                                    <td><center><img width="100" ng-src="{{ga.ruta}}" ></center></td>
                                     <td class="text-center" width="10%">
                                         <button ng-if="ga.activo==0" class="btn btn-success" ng-click="publicar(ga.idgaleria,1)" ><i class="fa fa-arrow-up"></i></button>
                                         <button ng-if="ga.activo!=0" class="btn btn-primary" ng-click="publicar(ga.idgaleria,0)" ><i class="fa fa-arrow-down"></i></button>

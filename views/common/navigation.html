@@ -40,6 +40,11 @@
                         <a ui-sref="galeria.galeriaFide"><i class="fa fa-file-picture-o"></i> <span class="nav-label"> Direcci&oacute;n de fideicomiso parque industrial progreso</span> </a>
                     </li>
                 </ul>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('config')}">
+                    <li ui-sref-active="active">
+                        <a ui-sref="galeria.galeriaIndustrial"><i class="fa fa-file-picture-o"></i> <span class="nav-label"> Direcci&oacute;n de desarrollo industrial y comercio exterior</span> </a>
+                    </li>
+                </ul>
             </li>
             <li ng-class="{active: $state.includes('config')}" ng-if="datos.config">
                 <a href="index.html"><i class="fa fa-cog"></i> <span class="nav-label">Configuraci&oacute;n</span>  <!-- Esto es la flecha para que le den click es solo un icono -->
