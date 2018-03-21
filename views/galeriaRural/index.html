@@ -1,0 +1,54 @@
+    <div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h1>Galer&iacute;a Direcci&oacute;n de desarrollo rural</h1>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <button class="btn btn-primary" ui-sref="galeria.agregar_rural">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row m-b">
+                        <div class="col-sm-12">
+                            <span class="label" style="border:1px solid;background-color:#a9dcf6;color:#000000; float: right !important">NO PUBLICADO</span>
+                        </div>
+                    </div>
+                    <div class="sk-spinner sk-spinner-wave" ng-if="loading">
+                        <div class="sk-rect1"></div>
+                        <div class="sk-rect2"></div>
+                        <div class="sk-rect3"></div>
+                        <div class="sk-rect4"></div>
+                        <div class="sk-rect5"></div>
+                    </div>
+                    <div class="table-responsive" ng-if="!loading ">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Imagen</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="ga in galeria" ng-class="{true: 'info', false:''} [ga.activo==0]">
+                                    <td>{{ga.idgaleria}}</td>
+                                    <td><center><img width="100" ng-src="{{ga.ruta}}" ></center></td>
+                                    <td class="text-center" width="10%">
+                                        <button ng-if="ga.activo==0" class="btn btn-success" ng-click="publicar(ga.idgaleria,1)" ><i class="fa fa-arrow-up"></i></button>
+                                        <button ng-if="ga.activo!=0" class="btn btn-primary" ng-click="publicar(ga.idgaleria,0)" ><i class="fa fa-arrow-down"></i></button>
+                                        <button class="btn btn-danger" ng-click="eliminar(ga.idgaleria,ga.ruta)" ><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
