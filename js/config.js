@@ -423,26 +423,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpPr
                 }
             }
         })
-        .state('galeria.galeriaRural', {
-            url: "/galeriaRural",
-            templateUrl: "views/galeriaRural/index.html",
-            controller: "CtrlRural",
-            authenticate: true,
-            permitidos:[1,2],
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                        },
-                        {
-                            name: 'oitozero.ngSweetAlert',
-                            files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                        }
-                    ]);
-                }
-            }
-        })
         .state('galeria.agregar_comercio', {
             url: "/agregar_comercio",
             templateUrl: "views/galeria/agregar.html",
@@ -583,33 +563,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpPr
             url: "/agregar_industrial",
             templateUrl: "views/galeriaIndustrial/agregar.html",
             controller: "CtrlIndustrialAgregar",
-            authenticate: true,
-            permitidos:[1,2],
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            files: ['js/plugins/jasny/jasny-bootstrap.min.js']
-                        },
-                        {
-                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
-                        },
-                        {
-                            name: 'oitozero.ngSweetAlert',
-                            files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
-                        },
-                        {
-                            name: 'datePicker',
-                            files: ['css/plugins/datapicker/angular-datapicker.css','js/plugins/datapicker/angular-datepicker.js']
-                        }
-                    ]);
-                }
-            }
-        })
-        .state('galeria.agregar_rural', {
-            url: "/agregar_rural",
-            templateUrl: "views/galeriaRural/agregar.html",
-            controller: "CtrlRuralAgregar",
             authenticate: true,
             permitidos:[1,2],
             resolve: {
