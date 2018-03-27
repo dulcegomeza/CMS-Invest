@@ -232,7 +232,7 @@ function numbersTextAcuteOnly(){
         link: function (scope, element, attr, ngModelCtrl) {
             function fromUser(text) {
                 if (text) {
-                    var transformedInput = text.replace(/[^a-zA-Z0-9ñÑáéíóúÁÉÍÓÚäëïöüÄËÏÖÜ\s]/g, '');
+                    var transformedInput = text.replace(/[^a-zA-Z0-9ñÑáéíóúÁÉÍÓÚäëïöüÄËÏÖÜ\s.,?¿!¡""]/g, '');
 
                     if (transformedInput !== text) {
                         ngModelCtrl.$setViewValue(transformedInput);

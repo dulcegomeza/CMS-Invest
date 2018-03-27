@@ -6,7 +6,7 @@ include 'db.php';
 
 $idnoticia = mysql_real_escape_string($_GET['idnoticia']);
 
-$sql = "SELECT idnoticia, titulo, contenido, fecha_noticia FROM noticias WHERE idnoticia = '$idnoticia'";
+$sql = "SELECT idnoticia, titulo, contenido, fecha_noticia, activo FROM noticias WHERE idnoticia = '$idnoticia'";
 $query = mysql_query($sql);
 $data  = mysql_fetch_object($query);
 
@@ -23,6 +23,7 @@ while($img = mysql_fetch_object($queryImg)){
 $json = array(
     "idnoticia"        => (int)$data->idnoticia,
     "titulo"           => $data->titulo,
+    "activo"           => $data->activo,
     "contenido"        => $data->contenido,
     "fecha_noticia"    => $data->fecha_noticia,
     "imagenes"         => array(),
