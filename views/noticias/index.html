@@ -10,28 +10,14 @@
                         <div class="col-lg-8">
                             <button class="btn btn-primary" ui-sref="noticias.agregar">Agregar</button>
                         </div>
-                        <!--
-                            <form>
-                                <div class="input-group date col-lg-4">
-                                    <span class="input-group-btn">
-                                        <button type="submit" class="m-r btn btn-primary btn-md" ng-click="filtro()">Buscar</button>
-                                    </span>
-                                    <input type="datetime" class="form-control" format="DD/MMM/YYYY" date-time ng-model="forma.fecha" min-view="date" auto-close="true" readOnly/>
-                                    <span ng-if="filtrado" class="input-group-btn">
-                                        <button type="submit" class="m-r btn btn-danger btn-md" ng-click="reiniciar()"><i class="fa fa-times"></i></button>
-                                    </span>
-                                    <span ng-if="!filtrado" class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </form>
--->
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <!--<div class="row m-b">
-                            <div class="col-sm-12">
-                                <span class="label" style="border:1px solid;background-color:#f2dede; float: right !important">NO PAGADO</span>
-                            </div>
-                        </div>-->
+                    <div class="row m-b">
+                        <div class="col-sm-12">
+                            <span class="label" style="border:1px solid;background-color:#a9dcf6;color:#000000; float: right !important">NO PUBLICADO</span>
+                        </div>
+                    </div>
                     <div class="sk-spinner sk-spinner-wave" ng-if="loading">
                         <div class="sk-rect1"></div>
                         <div class="sk-rect2"></div>
@@ -53,7 +39,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="noticia in noticias">
+                                <tr ng-repeat="noticia in noticias" ng-class="{true: 'info', false:''} [noticia.activo==0]">
                                     <td width="10%">{{noticia.fecha_noticia}}</td>
                                     <td width="30%" style="white-space: pre-wrap !important;">{{noticia.titulo | limitTo:150}}</td>
                                     <td style="white-space: pre-wrap !important;">{{noticia.contenido | limitTo:300}}</td>
