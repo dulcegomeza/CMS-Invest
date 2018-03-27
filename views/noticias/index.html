@@ -58,7 +58,7 @@
                                     <td width="30%" style="white-space: pre-wrap !important;">{{noticia.titulo | limitTo:150}}</td>
                                     <td style="white-space: pre-wrap !important;">{{noticia.contenido | limitTo:300}}</td>
                                     <td class="text-center" width="10%">
-                                        <button title="Editar" class="btn btn-info" ui-sref="noticias.editar({idnoticia:noticia.idnoticia})"><i class="fa fa-edit"></i></button>
+                                        <button ng-if="noticia.activo==0" title="Editar" class="btn btn-info" ui-sref="noticias.editar({idnoticia:noticia.idnoticia})"><i class="fa fa-edit"></i></button>
                                         <button title="Desactivar" ng-if="noticia.activo" ng-click="desactivar(noticia.idnoticia)" class="btn btn-danger"><i class="fa fa-ban"></i></button>
                                         <button title="Activar" ng-if="!noticia.activo" ng-click="activar(noticia.idnoticia)" class="btn btn-primary"><i class="fa fa-check"></i></button>
                                     </td>

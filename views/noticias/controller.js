@@ -41,14 +41,42 @@ angular
         });
 
         $scope.activar = function(idnoticia){
-            $http.get('php/noticias_activar.php?idnoticia=' + idnoticia).success(function(response){
-                $state.go($state.current, {}, {reload: true});
+            SweetAlert.swal({
+                title: "AVISO",
+                text: "¿Estas seguro de activar la noticia?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si",
+                cancelButtonText: "NO",
+                closeOnConfirm: true,
+                closeOnCancel: true },
+                            function (isConfirm) {
+                if (isConfirm) {
+                    $http.get('php/noticias_activar.php?idnoticia=' + idnoticia).success(function(response){
+                        $state.go($state.current, {}, {reload: true});
+                    });
+                }
             });
         }
 
         $scope.desactivar = function(idnoticia){
-            $http.get('php/noticias_desactivar.php?idnoticia=' + idnoticia).success(function(response){
-                $state.go($state.current, {}, {reload: true});
+            SweetAlert.swal({
+                title: "AVISO",
+                text: "¿Estas seguro de desactivar la noticia?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si",
+                cancelButtonText: "NO",
+                closeOnConfirm: true,
+                closeOnCancel: true },
+                            function (isConfirm) {
+                if (isConfirm) {
+                    $http.get('php/noticias_desactivar.php?idnoticia=' + idnoticia).success(function(response){
+                        $state.go($state.current, {}, {reload: true});
+                    });
+                }
             });
         }
     }])
@@ -71,12 +99,7 @@ angular
             $http.get('php/noticia.php?idnoticia='+$stateParams.idnoticia).success(function(response) {
                 $scope.forma = response;
                 $scope.forma.idusuario = $rootScope.datos.idusuario;
-                console.log(response);
             });
-        }
-
-        $scope.ver = function(){
-            console.log($scope.forma);
         }
 
         $scope.agregar = function(){

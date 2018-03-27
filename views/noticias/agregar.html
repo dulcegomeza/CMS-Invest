@@ -4,6 +4,7 @@
             <div class="ibox">
                 <div class="ibox-title">
                     <h1>Captura de datos</h1>
+                    <p><strong>Nota:</strong> Las imágenes no deben pesar más de 2MB.</p>
                 </div>
                 <div class="ibox-content" ng-if="agregando">
                     <div class="sk-spinner sk-spinner-fading-circle">
@@ -35,7 +36,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><i class="fa fa-asterisk"></i> Titulo</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" ng-model="forma.titulo" required maxlength="255" disallow-multiple-spaces numbers-text-acute-only>
+                                <input type="text" to-upper class="form-control" ng-model="forma.titulo" required maxlength="255" disallow-multiple-spaces numbers-text-acute-only>
                             </div>
                         </div>
                         <div class="form-group">
@@ -47,7 +48,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Imagenes nuevas</label>
                             <div class="col-md-10">
-                                <input type="file" class="form-control" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ng-model="forma.imagenes" name="file" ngf-max-size="20MB" ngf-max-files="20" ngf-multiple="true" ng-required="forma.rutas.length == 0">
+                                <input type="file" class="form-control" ngf-select ngf-pattern="'image/jpg,image/jpeg,image/png'" ngf-accept="'image/jpg,image/jpeg,image/png'" ng-model="forma.imagenes" name="file" ngf-max-size="2MB" ngf-max-files="20" ngf-multiple="true" ng-required="forma.rutas.length == 0">
                             </div>
                             <label class="col-sm-2 control-label"></label>
                             <div class="col-md-10">
@@ -62,6 +63,20 @@
                                     <img ng-src="{{ruta.ruta}}" alt="sq-sample20" ng-click="eliminarImg(ruta.idnoticia_imagen)">
                                     <figcaption ng-click="eliminarImg(ruta.idnoticia_imagen)"><i class="fa fa-trash"></i></figcaption>
                                 </figure>
+                            </div>
+                        </div>
+                        <div >
+                            <label style="padding-top:0px !important;" class="col-md-2 control-label">Publicar</label>
+                            <div class="col-md-10">
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" class="onoffswitch-checkbox"  ng-model="forma.activo" id="example2">
+                                        <label class="onoffswitch-label" for="example2">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">

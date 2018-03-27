@@ -8,15 +8,21 @@ $servidor = $_SERVER['DOCUMENT_ROOT'];
 $ruta = $servidor.$app.$carpeta_noticias;
 
 $idnoticia = $_POST['idnoticia'];
+$activo = $_POST['activo'];
 $titulo = $_POST['titulo'];
 $contenido = $_POST['contenido'];
 $fecha_noticia= date('Y-m-d H:m:s', strtotime((string)$_POST['fecha_noticia']));
 $idusuario = $_POST['idusuario'];
 
-if($idnoticia == 0){
-    $sql = "INSERT INTO noticias(idusuario, titulo, contenido, fecha_noticia, fecha_captura, activo) VALUES('$idusuario', '$titulo', '$contenido', '$fecha_noticia', now(), '0')";
+if($activo=='false' || $activo=='0'){
+    $activo=0;
 }else{
-    $sql = "UPDATE noticias SET titulo = '$titulo', contenido = '$contenido', fecha_noticia = '$fecha_noticia' WHERE idnoticia = '$idnoticia'";
+    $activo=1;
+}
+if($idnoticia == 0){
+    $sql = "INSERT INTO noticias(idusuario, titulo, contenido, fecha_noticia, fecha_captura, activo) VALUES('$idusuario', '$titulo', '$contenido', '$fecha_noticia', now(), '$activo')";
+}else{
+    $sql = "UPDATE noticias SET titulo = '$titulo', contenido = '$contenido', fecha_noticia = '$fecha_noticia', activo='$activo' WHERE idnoticia = '$idnoticia'";
 }
 
 if(mysql_query($sql)){
