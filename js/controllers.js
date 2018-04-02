@@ -30,7 +30,7 @@ angular
     /* LOGIN */
     .controller('indexCtrl', function($rootScope, $scope, $http, localStorageService, $state){
         if($rootScope.datos){
-            $state.go('videos.index');
+            $state.go('noticias.index');
         }
 
         $scope.forma = {
@@ -50,7 +50,7 @@ angular
                 if (data.login){
                     localStorageService.set('datos_cms_invest', data.datos);
                     localStorageService.set('token_cms_invest', data.token);
-                    $state.go('videos.index');
+                    $state.go('noticias.index');
                 } else {
                     $scope.error = data.error;
                 }
